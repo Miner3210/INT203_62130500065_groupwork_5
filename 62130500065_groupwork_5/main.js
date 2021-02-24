@@ -1,4 +1,4 @@
-const app = {
+const app = Vue.createApp({
     data() {
         return {
             items: [
@@ -20,7 +20,9 @@ const app = {
         
         methods:{
             toogleLove(index){
-                this.backupitems[index].Love = !this.backupitems[index].Love},
+                
+                this.backupitems[index].Love = !this.backupitems[index].Love
+                },
             SearchG(){
                 this.search = !this.search
                 this.backupitems = [...this.items]
@@ -68,11 +70,7 @@ const app = {
                 this.haveResult = this.backupitems.length > 0 
             }
         },
-        }   
-      
-        
-        
-    
+        } )  
 
 
-Vue.createApp(app).mount('#app')
+

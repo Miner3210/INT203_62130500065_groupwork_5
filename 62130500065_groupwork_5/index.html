@@ -50,7 +50,7 @@
 <body>
 
   <div id="app" class="">
-    <h2 class="text-center">Photo Gallery ({{ countUnLove }})</h2>
+    <photo-item :countunlove1="countUnLove"></photo-item>
     <div class="flex justify-center">
       <div class="inline">
         <input type="text" v-model="searchText"   placeholder="Please enter text for searching photos" v-show="search" 
@@ -68,7 +68,12 @@
       clear
       </span>
   </div>
-    <ul v-for="(item,index) in backupitems "class="justify-self-stretch text-center m-4">
+  <photo-view :backupitem="backupitems" @love="toogleLove"
+  @imge="toogleImage"></photo-view>
+ 
+
+      
+    <!-- <ul v-for="(item,index) in backupitems "class="justify-self-stretch text-center m-4">
       
       <li class="inline p-10 py-28" v-on:click="toogleLove(index)">
       <img v-bind:src="item.img" class="inline">
@@ -81,7 +86,7 @@
       <img class="heart inline" src="./images/heart.png" v-show="item.Love">
     </li>  
       
-    </ul>
+    </ul> -->
     
     
   </div>
@@ -92,7 +97,11 @@
   <!-- my main.js -->
 
   <script src="./main.js"></script>
-
+  <script src="./Components/PhotoItem.js"></script>
+  <script src="./Components/PhotoView.js"></script>
+  <script >
+    const mount = app.mount('#app')  
+  </script>
 </body>
 
 </html>
