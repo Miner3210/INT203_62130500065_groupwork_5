@@ -51,7 +51,9 @@
 
   <div id="app" class="">
     <photo-item :countunlove1="countUnLove"></photo-item>
-    <div class="flex justify-center">
+    <photo-search :searchtext="searchText" :search="search" @searchg="SearchG"
+    @searchgs="SearchG" @canclet="CancelT" @searchtext2="searchText2"></photo-search>
+    <!-- <div class="flex justify-center">
       <div class="inline">
         <input type="text" v-model="searchText"   placeholder="Please enter text for searching photos" v-show="search" 
        />
@@ -61,17 +63,18 @@
     <span class="material-icons  search inline" v-on:click="SearchG" v-if="search === false">
       search
     </span>
-    </div>
-    <div v-if="imageshow.Check"  class="justify-self-stretch text-center p-10 bg-black">
+    </div> -->
+    <photo-view :imageshow="imageshow" @toflase="toFlase"></photo-view>
+    <!-- <div v-if="imageshow.Check"  class="justify-self-stretch text-center p-10 bg-black">
     <img v-bind:src="imageshow.img" class="inline">
     <span @click="toFlase()" class="material-icons inline bg-white hover\:bg-gray-100">
       clear
       </span>
-  </div>
-  <photo-view :backupitem="backupitems" @love="toogleLove"
-  @imge="toogleImage"></photo-view>
+  </div> -->
+  <photo-item2 :backupitem="backupitems" @love="toogleLove"
+  @imge="toogleImage"></photo-item2>
  
-
+  
       
     <!-- <ul v-for="(item,index) in backupitems "class="justify-self-stretch text-center m-4">
       
@@ -99,6 +102,7 @@
   <script src="./main.js"></script>
   <script src="./Components/PhotoItem.js"></script>
   <script src="./Components/PhotoView.js"></script>
+  <script src="./Components/PhotoSearch.js"></script>
   <script >
     const mount = app.mount('#app')  
   </script>

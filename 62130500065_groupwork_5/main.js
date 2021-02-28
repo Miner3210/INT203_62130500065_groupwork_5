@@ -20,7 +20,7 @@ const app = Vue.createApp({
         
         methods:{
             toogleLove(index){
-                
+                console.log(this.search)
                 this.backupitems[index].Love = !this.backupitems[index].Love
                 },
             SearchG(){
@@ -38,17 +38,26 @@ const app = Vue.createApp({
                     this.imageshow.Check = false 
                     this.imageshow.img = this.items[index].img;     
                     this.imageshow.index = -1  
+                    
                 }
                 else{
                     this.imageshow.Check = true
                     this.imageshow.index = index
                     this.imageshow.img = this.items[index].img;
+                    
                 }
                
             },
             toFlase(){
                     this.imageshow.Check = false;
                     this.imageshow.index = -1 
+            },
+            searchText2(searchText){
+                this.backupitems = this.items
+                console.log(this.searchText)
+                const query =  searchText['data'].toLowerCase()
+                this.backupitems = this.backupitems.filter(backupitems => backupitems.message.toLowerCase().search(query) > -1)
+                this.haveResult = this.backupitems.length > 0 
             }
         }
         ,
@@ -60,16 +69,7 @@ const app = Vue.createApp({
                 
             }
 
-        },
-        watch : {
-            searchText : function() {
-                this.backupitems = this.items
-                console.log(this.searchText)
-                const query =  this.searchText.toLowerCase()
-                this.backupitems = this.backupitems.filter(backupitems => backupitems.message.toLowerCase().search(query) > -1)
-                this.haveResult = this.backupitems.length > 0 
-            }
-        },
+        }
         } )  
 
 
