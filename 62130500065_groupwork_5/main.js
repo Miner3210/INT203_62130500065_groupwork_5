@@ -57,9 +57,9 @@ const app = Vue.createApp({
                 console.log(this.searchText)
                 let query
                 if(searchText['data'] == null){
-                        console.log("kuy")
+                
                 }else{
-                    console.log("hee")
+                 
                 query =  searchText['data'].toLowerCase()
                 
                 }
