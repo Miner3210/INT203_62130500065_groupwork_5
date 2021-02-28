@@ -55,7 +55,15 @@ const app = Vue.createApp({
             searchText2(searchText){
                 this.backupitems = this.items
                 console.log(this.searchText)
-                const query =  searchText['data'].toLowerCase()
+                let query
+                if(searchText['data'] == null){
+                        console.log("kuy")
+                }else{
+                    console.log("hee")
+                query =  searchText['data'].toLowerCase()
+                
+                }
+                
                 this.backupitems = this.backupitems.filter(backupitems => backupitems.message.toLowerCase().search(query) > -1)
                 this.haveResult = this.backupitems.length > 0 
             }
